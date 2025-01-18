@@ -8,10 +8,10 @@ export class MainContent extends React.Component {
         "description": "Software Engineering",
         "email": "aryak@gmail.com",
         "products": [
-            {id: 1, name: null, price: 200, quantity: 10},
-            {id: 2, name: "car", price: 20000, quantity: 3},
-            {id: 3, name: "laptop", price: 1200, quantity: 10},
-            {id: 4, name: "Tea", price: 23, quantity: 0},
+            {id: 1, name: null, price: 200, quantity: 10, photo: "https://picsum.photos/id/1001/60"},
+            {id: 2, name: "car", price: 20000, quantity: 3, photo: "https://picsum.photos/id/1002/60"},
+            {id: 3, name: "laptop", price: 1200, quantity: 10, photo: "https://picsum.photos/id/1003/60"},
+            {id: 4, name: "Tea", price: 23, quantity: 0, photo: "https://picsum.photos/id/1000/60"},
         ]
     };
 
@@ -20,8 +20,6 @@ export class MainContent extends React.Component {
         return (<React.Fragment>
 
             {this.printBasicInfo()}
-
-            <button type="button" className="btn btn-primary" onClick={this.onClick}>CLICK ME</button>
 
             {this.loadProductCard()}
 
@@ -55,15 +53,17 @@ export class MainContent extends React.Component {
      * @returns {unknown[]}
      */
     loadProductCard = () => {
-        return this.state.products.map((item, index) => (
+        return this.state.products.map((product, index) => (
 
-            <div className="card border-secondary mb-3" key={item.id}>
-                <div className="card-header">{item.id}</div>
+            <div className="card border-secondary mb-3" key={product.id}>
+                <div className="card-header">{product.id}</div>
                 <div className="card-body">
-                    <h4 className="card-title">{this.getProductName(item.name)}</h4>
-                    <p className="card-text">Price : $ {(item.price == null) ? "No price" : item.price}</p>
+                    <h4 className="card-title">{this.getProductName(product.name)}</h4>
+                    <p className="card-text">Price : $ {(product.price == null) ? "No price" : product.price}</p>
                     <p className="card-text">Quantity available
-                        : {(item.quantity === 0) ? "Out of stock!" : item.quantity}</p>
+                        : {(product.quantity === 0) ? "Out of stock!" : product.quantity}</p>
+                    <p className="card-text"><img src={product.photo} alt={product.name}/></p>
+                    <button type="button" className="btn btn-primary" onClick={() => this.buyProduct(product, index)}>BUY</button>
                 </div>
             </div>
 
@@ -77,5 +77,12 @@ export class MainContent extends React.Component {
                 <h3>Your description is : {this.state.description}</h3>
                 <a href="#">{this.state.email}</a>
             </div>)
+    }
+
+    buyProduct(product, index){
+        console.log("buying product : ", product);
+        let products = this.state.products;
+        products[index].quantity = products[index].quantity - 1;
+        this.setState({products: products});
     }
 }
