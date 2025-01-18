@@ -46,3 +46,14 @@ Your app is ready to be deployed!
   - componentWillUnmount()
 - Exception 
   - componentDidCatch(error, info)
+
+**Mocking backend server**
+
+- Create a test.json file as per git repo
+- Run the command :
+```
+json-server --port 8081 test.json --watch
+```
+```
+Access the URL : http://localhost:8081/products
+```

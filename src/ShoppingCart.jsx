@@ -29,15 +29,11 @@ export class ShoppingCart extends React.Component {
     /**
      * fetch data from database, make HTTP calls etc.
      */
-    componentDidMount(){
+    componentDidMount = async () => {
 
-        let responsePromise = fetch("http://localhost:8081/products", {method: "GET"});
-        responsePromise.then(response => {
-            let promise = response.json();
-            promise.then(data => {
-                this.setState({products: data});
-            })
-        })
+        let promise = await fetch("http://localhost:8081/products", {method: "GET"});
+        let data = await promise.json()
+        this.setState({products: data})
         console.log("componentDidMount called!");
     }
 
