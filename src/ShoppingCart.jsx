@@ -51,6 +51,19 @@ export class ShoppingCart extends React.Component {
     }
 
     /**
+     * executed when parent component removes child component or user routing to different compoenent
+     */
+    componentWillUnmount(){
+        // typically for cleanup code, cancel http requests if any
+        console.log("componentWillUnmount called");
+    }
+
+    componentDidCatch(error, errorInfo){
+        console.log("componentDidCatch called");
+        console.log(error);
+    }
+
+    /**
      * by making this as arrow function, we refer the method to point to component state
      * and not button state while using "this.setState" method
      */
