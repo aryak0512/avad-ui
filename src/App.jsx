@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Navbar} from "./Navbar";
-import {MainContent} from "./MainContent";
+import {ShoppingCart} from "./ShoppingCart";
 
 /**
  * The top level, root component. All components are nested within this component.
@@ -14,7 +14,7 @@ export class App extends Component {
         return (
             <React.Fragment>
                 <Navbar/>
-                <MainContent/>
+                <ShoppingCart/>
             </React.Fragment>
         )
     }

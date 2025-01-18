@@ -1,7 +1,8 @@
 import React from "react";
+import {Product} from "./Product";
 
 
-export class MainContent extends React.Component {
+export class ShoppingCart extends React.Component {
 
     state = {
         "name": "aryak",
@@ -35,18 +36,7 @@ export class MainContent extends React.Component {
         this.setState({name: "Rajesh", description: "Mech Engineering"});
     }
 
-    /**
-     * can hold any complex validation logic here
-     * @param name
-     * @returns {*|string}
-     */
-    getProductName = (name) => {
 
-        if (name)
-            return name;
-        else
-            return "Unknown Product";
-    }
 
     /**
      * iterate over products array, specify the unique key
@@ -55,16 +45,11 @@ export class MainContent extends React.Component {
     loadProductCard = () => {
         return this.state.products.map((product, index) => (
 
-            <div className="card border-secondary mb-3" key={product.id}>
-                <div className="card-header">{product.id}</div>
-                <div className="card-body">
-                    <h4 className="card-title">{this.getProductName(product.name)}</h4>
-                    <p className="card-text">Price : $ {(product.price == null) ? "No price" : product.price}</p>
-                    <p className="card-text">Quantity available
-                        : {(product.quantity === 0) ? "Out of stock!" : product.quantity}</p>
-                    <p className="card-text"><img src={product.photo} alt={product.name}/></p>
-                    <button type="button" className="btn btn-primary" onClick={() => this.buyProduct(product, index)}>BUY</button>
-                </div>
+
+            <div key={product.id}>
+                <Product product={product}
+                         index = {index}
+                />
             </div>
 
         ))
@@ -79,10 +64,5 @@ export class MainContent extends React.Component {
             </div>)
     }
 
-    buyProduct(product, index){
-        console.log("buying product : ", product);
-        let products = this.state.products;
-        products[index].quantity = products[index].quantity - 1;
-        this.setState({products: products});
-    }
+
 }
