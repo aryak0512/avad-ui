@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": null,
+      "price": 200,
+      "quantity": 10,
+      "photo": "https://picsum.photos/id/1001/60"
+    },
+    {
+      "id": 2,
+      "name": "car",
+      "price": 20000,
+      "quantity": 3,
+      "photo": "https://picsum.photos/id/1002/60"
+    },
+    {
+      "id": 3,
+      "name": "laptop",
+      "price": 1200,
+      "quantity": 10,
+      "photo": "https://picsum.photos/id/1003/60"
+    },
+    {
+      "id": 4,
+      "name": "Tea",
+      "price": 23,
+      "quantity": 0,
+      "photo": "https://picsum.photos/id/1000/60"
+    }
+  ]
+}

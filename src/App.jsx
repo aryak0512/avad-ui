@@ -16,7 +16,7 @@ export class App extends Component {
             <React.Fragment>
                 <Navbar/>
                 {/*<ShoppingCart/>*/}
-                <Login/>
+                <ShoppingCart/>
             </React.Fragment>
         )
     }

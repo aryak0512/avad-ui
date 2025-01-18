@@ -4,22 +4,14 @@ import {Product} from "./Product";
 
 export class ShoppingCart extends React.Component {
 
+    state = {products: []};
+
     constructor(props){
         console.log("Constructor called")
 
         // initialise the state
         super(props);
-        this.state = {
-            "name": "aryak",
-            "description": "Software Engineering",
-            "email": "aryak@gmail.com",
-            "products": [
-                {id: 1, name: null, price: 200, quantity: 10, photo: "https://picsum.photos/id/1001/60"},
-                {id: 2, name: "car", price: 20000, quantity: 3, photo: "https://picsum.photos/id/1002/60"},
-                {id: 3, name: "laptop", price: 1200, quantity: 10, photo: "https://picsum.photos/id/1003/60"},
-                {id: 4, name: "Tea", price: 23, quantity: 0, photo: "https://picsum.photos/id/1000/60"},
-            ]
-        }
+
     }
 
     render(){
@@ -38,6 +30,14 @@ export class ShoppingCart extends React.Component {
      * fetch data from database, make HTTP calls etc.
      */
     componentDidMount(){
+
+        let responsePromise = fetch("http://localhost:8081/products", {method: "GET"});
+        responsePromise.then(response => {
+            let promise = response.json();
+            promise.then(data => {
+                this.setState({products: data});
+            })
+        })
         console.log("componentDidMount called!");
     }
 
@@ -97,7 +97,7 @@ export class ShoppingCart extends React.Component {
             <div>
                 <h1>Hi {this.state.name}</h1>
                 <h3>Your description is : {this.state.description}</h3>
-                <a href="#">{this.state.email}</a>
+                <a href="https://www.google.com">{this.state.email}</a>
             </div>)
     }
 
