@@ -57,3 +57,8 @@ json-server --port 8081 test.json --watch
 ```
 Access the URL : http://localhost:8081/products
 ```
+
+**Routing**
+```
+npm install react-router-dom --save
+```

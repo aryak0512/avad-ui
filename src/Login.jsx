@@ -44,12 +44,19 @@ export class Login extends Component {
     /**
      * some basic validations & send to server for authentication
      */
-    validateCredentials = () => {
-        if (this.state.email.length < 3) {
-            this.setState({message: "Please enter a valid email address"});
-            return;
+    validateCredentials = async () => {
+
+        // make call to backend with the given credentials
+        let response = await fetch(`http://localhost:8081/users?email=${this.state.email}&password=${this.state.password}`, {
+            method: "GET"
+        })
+        let data = await response.json();
+
+        if (data.length > 0) {
+            this.setState({message: "Login Success"});
+        } else {
+            this.setState({message: "Authentication failure"});
         }
-        console.log(this.state.email);
-        console.log(this.state.password);
+
     }
 }
