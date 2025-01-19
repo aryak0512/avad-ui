@@ -1,4 +1,5 @@
 import {Component} from "react";
+import {useNavigate} from "react-router-dom";
 
 export class Login extends Component {
 
@@ -54,6 +55,11 @@ export class Login extends Component {
 
         if (data.length > 0) {
             this.setState({message: "Login Success"});
+
+            // update the state of app component indirectly
+            this.props.updateLoginState(true);
+            this.props.history.push("/cart");
+
         } else {
             this.setState({message: "Authentication failure"});
         }

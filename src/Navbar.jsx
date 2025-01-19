@@ -3,13 +3,6 @@ import {NavLink} from "react-router-dom";
 
 export class Navbar extends Component {
 
-    state = {}
-
-    constructor(props){
-        super(props);
-        this.state = {isLoggedIn: this.props.isLoggedIn};
-    }
-
     render(){
 
         return (
@@ -25,15 +18,21 @@ export class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarColor02">
                         <ul className="navbar-nav me-auto">
 
-                            <li className="nav-item">
+                            {/* render the link conditionally */}
+                            {this.props.isLoggedIn ? (<li className="nav-item">
                                 <NavLink className="nav-link" to="/cart">Cart</NavLink>
-                            </li>
-                            <li className="nav-item">
+                            </li>) : ""}
+
+                            {/* render the link conditionally */}
+                            {!this.props.isLoggedIn ? (<li className="nav-item">
                                 <NavLink className="nav-link" to="/login">Login</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/">Product</NavLink>
-                            </li>
+                            </li>) : ""}
+
+                            {/* render the link conditionally */}
+                            {this.props.isLoggedIn ? (<li className="nav-item">
+                                <NavLink className="nav-link" to="/product">Product</NavLink>
+                            </li>) : ""}
+
 
                         </ul>
                         <form className="d-flex">

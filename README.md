@@ -62,3 +62,9 @@ Access the URL : http://localhost:8081/products
 ```
 npm install react-router-dom --save
 ```
+
+**For programmatically navigating from one route to another**
+```
+npm install history
+npm install react-router-dom history
+```
